@@ -8,8 +8,8 @@ var cwd = process.cwd();
 
 function parseGitignore(opts) {
   opts = opts || {};
-
-  var gitignoreFile = lookup()('.gitignore', {cwd: cwd});
+  var gitignoreFilename = opts.gitignoreFilename || '.gitignore';
+  var gitignoreFile = lookup()(gitignoreFilename, {cwd: cwd});
   var ignorePatterns = ignore()(gitignoreFile);
 
   var isMatch = function (fp) {
